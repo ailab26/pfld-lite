@@ -46,10 +46,7 @@ class BASE(mx.gluon.HybridBlock):
 
             nn.MaxPool2D(pool_size=(2,2), strides=(2,2)),
 
-            nn.Flatten(),
-
-            nn.Dense(units=512, activation=None),
-            nn.Dense(units=self.pts_num*2, activation=None)
+            nn.Conv2D(channels=num_of_pts*2, kernel_size=(3,3), strides=(1,1), padding=(0,0))
         )
 
     def hybrid_forward(self, F, x):

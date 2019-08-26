@@ -82,13 +82,10 @@ class CPFLD(mx.gluon.HybridBlock):
         self.s3_bn   = nn.BatchNorm(scale=True)
         self.s3_act  = nn.Activation('relu')
         
-        self.s1_avg = nn.AvgPool2D(pool_size=(5,5), strides=(4,4), padding=(2,2))
-        self.s2_avg = nn.AvgPool2D(pool_size=(3,3), strides=(2,2), padding=(1,1))
 
         self.lmks_out = nn.HybridSequential()
         self.lmks_out.add(
             nn.Conv2D(channels=num_of_pts*2, kernel_size=(3,3), strides=(1,1), padding=(0,0)),
-            #nn.Flatten()
         )
 
     def hybrid_forward(self, F, x):
@@ -104,13 +101,8 @@ class CPFLD(mx.gluon.HybridBlock):
         s3  = self.s3_conv(s2)
         s3  = self.s3_bn(s3)
         s3  = self.s3_act(s3)
-
-        
-        s1  = self.s1_avg(s1)
-        s2  = self.s2_avg(s2)
      
-        lmk = F.concat(s1, s2, s3,  dim=1)
-        lmk = self.lmks_out(lmk)
+        lmk = self.lmks_out(s3)
         return lmk
 
 

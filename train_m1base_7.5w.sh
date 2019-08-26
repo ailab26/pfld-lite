@@ -3,7 +3,7 @@
 OUTPUT_DIR='./outputs/m1base_7.5w'
 TRAIN_DATA_PATH='./datas/7.5w/pfld_train_data.rec'
 VALID_DATA_PATH='./datas/7.5w/pfld_valid_data.rec'
-LEARNING_RATE=0.0004
+LEARNING_RATE=0.0001
 BATCH_SIZE=128
 EPOCHES=1000
 GPU_IDS='0,1'
