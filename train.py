@@ -3,6 +3,7 @@ from models.NPFLD import NPFLD
 from models.CPFLD import CPFLD
 from models.BASE import BASE
 from models.MSBASE import MSBASE
+from models.M1BASE import M1BASE
 import numpy as np
 from mxnet import nd
 from mxnet import autograd
@@ -79,7 +80,8 @@ if __name__ == '__main__':
         net = BASE(num_of_pts=pts_num)
     if 'MSBASE' in model_type:
         net = MSBASE(num_of_pts=pts_num)
-
+    if 'M1BASE' in model_type:
+        net = M1BASE(num_of_pts=pts_num)
     net.initialize(mx.init.Normal(sigma=0.001), ctx=devices, force_reinit=True)
 
     net.hybridize()
