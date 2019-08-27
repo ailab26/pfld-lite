@@ -30,8 +30,8 @@ class LinearBottleneck(nn.HybridBlock):
 
     def hybrid_forward(self, F, x):
         out = self.out(x)
-        if self.use_shortcut:
-            out = F.elemwise_add(out, x)
+        #if self.use_shortcut:
+        #    out = F.elemwise_add(out, x)
         return out
 
 
