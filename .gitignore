@@ -1,8 +1,6 @@
 datas
 outputs
 
-export_onnx.py
-
 *.out
 *.pyc
 *.swp
