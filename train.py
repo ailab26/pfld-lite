@@ -170,8 +170,14 @@ if __name__ == '__main__':
                     lmks_loss = nd.square(lmks_regs - lmks)
                     lmks_loss = nd.sum(lmks_loss, axis=1)
 
+                    #angs_loss = 1 - mx.nd.cos((angs_regs - angs)) 
+                    #angs_loss = mx.nd.sum(angs_loss, axis=1)
+
                     loss = lmks_loss
-                    
+
+                    #if with_angle:
+                    #    loss = loss * angs_loss
+
                     if with_category:
                         loss = loss * cate
 
